@@ -1,0 +1,487 @@
+Call:
+lm(formula = Ret1M ~ Ret1D + Ret1W + Ret3M + Ret6M + Ret12M, 
+    data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.22366 -0.05230 -0.00539  0.04424  0.38115 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.051589   0.007645   6.748 1.69e-10 ***
+Ret1D        1.140096   0.346557   3.290  0.00119 ** 
+Ret1W        0.180126   0.179901   1.001  0.31795    
+Ret3M        0.278685   0.062782   4.439 1.51e-05 ***
+Ret6M       -0.046587   0.042205  -1.104  0.27104    
+Ret12M      -0.062282   0.024237  -2.570  0.01093 *  
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08216 on 194 degrees of freedom
+Multiple R-squared: 0.2237,	Adjusted R-squared: 0.2036 
+F-statistic: 11.18 on 5 and 194 DF,  p-value: 1.769e-09 
+
+Call:
+lm(formula = Ret1M ~ Turnover_1D + Turnover_5D + Turnover_20D + 
+    Turnover_52W, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.25716 -0.05580 -0.00718  0.04458  0.60468 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   4.547e-02  7.823e-03   5.812 2.48e-08 ***
+Turnover_1D   9.236e-05  1.412e-04   0.654    0.514    
+Turnover_5D   9.064e-08  1.173e-06   0.077    0.938    
+Turnover_20D -2.650e-07  1.632e-06  -0.162    0.871    
+Turnover_52W -9.230e-05  1.414e-04  -0.653    0.515    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.09288 on 195 degrees of freedom
+Multiple R-squared: 0.002694,	Adjusted R-squared: -0.01776 
+F-statistic: 0.1317 on 4 and 195 DF,  p-value: 0.9707 
+
+Call:
+lm(formula = Ret1M ~ Inst_1D + Inst_5D + Inst_20D + Inst_60D + 
+    Inst_120D + Inst_250D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.15704 -0.05064 -0.00901  0.03322  0.57260 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.0449200  0.0066116   6.794 1.32e-10 ***
+Inst_1D      0.0034117  0.0068132   0.501   0.6171    
+Inst_5D     -0.0038533  0.0019319  -1.995   0.0475 *  
+Inst_20D     0.0038289  0.0005989   6.393 1.19e-09 ***
+Inst_60D    -0.0003554  0.0004284  -0.829   0.4079    
+Inst_120D   -0.0003515  0.0003458  -1.017   0.3106    
+Inst_250D    0.0002111  0.0001906   1.107   0.2696    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08448 on 193 degrees of freedom
+Multiple R-squared: 0.1834,	Adjusted R-squared: 0.158 
+F-statistic: 7.225 on 6 and 193 DF,  p-value: 5.706e-07 
+
+Call:
+lm(formula = Ret1M ~ Sec_1D + Sec_5D + Sec_20D + Sec_60D + Sec_120D + 
+    Sec_250D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.23798 -0.05623 -0.00776  0.04117  0.60079 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.043288   0.006973   6.208 3.21e-09 ***
+Sec_1D       0.015511   0.022828   0.679    0.498    
+Sec_5D      -0.003630   0.004498  -0.807    0.421    
+Sec_20D     -0.001243   0.001851  -0.671    0.503    
+Sec_60D      0.002051   0.002073   0.989    0.324    
+Sec_120D    -0.002053   0.001874  -1.096    0.275    
+Sec_250D     0.002088   0.001457   1.433    0.153    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.09199 on 193 degrees of freedom
+Multiple R-squared: 0.03179,	Adjusted R-squared: 0.001692 
+F-statistic: 1.056 on 6 and 193 DF,  p-value: 0.3905 
+
+Call:
+lm(formula = Ret1M ~ Fund_1D + Fund_5D + Fund_20D + Fund_60D + 
+    Fund_120D + Fund_250D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.16596 -0.05121 -0.00414  0.04224  0.59170 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.0502817  0.0068554   7.335 5.99e-12 ***
+Fund_1D      0.0113319  0.0148895   0.761   0.4475    
+Fund_5D     -0.0083128  0.0046248  -1.797   0.0738 .  
+Fund_20D     0.0086363  0.0013153   6.566 4.66e-10 ***
+Fund_60D    -0.0013190  0.0009729  -1.356   0.1768    
+Fund_120D   -0.0006240  0.0006751  -0.924   0.3565    
+Fund_250D    0.0004266  0.0003088   1.381   0.1688    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08445 on 193 degrees of freedom
+Multiple R-squared: 0.1839,	Adjusted R-squared: 0.1586 
+F-statistic:  7.25 on 6 and 193 DF,  p-value: 5.387e-07 
+
+Call:
+lm(formula = Ret1M ~ Pension_1D + Pension_5D + Pension_20D + 
+    Pension_60D + Pension_120D + Pension_250D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.21259 -0.05257  0.00187  0.04087  0.59814 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.0486108  0.0075224   6.462 8.22e-10 ***
+Pension_1D    0.0074631  0.0170534   0.438  0.66214    
+Pension_5D   -0.0055900  0.0063465  -0.881  0.37951    
+Pension_20D   0.0055750  0.0018699   2.981  0.00324 ** 
+Pension_60D  -0.0012199  0.0010638  -1.147  0.25291    
+Pension_120D -0.0012706  0.0009329  -1.362  0.17479    
+Pension_250D  0.0002728  0.0005315   0.513  0.60834    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08916 on 193 degrees of freedom
+Multiple R-squared: 0.09037,	Adjusted R-squared: 0.06209 
+F-statistic: 3.196 on 6 and 193 DF,  p-value: 0.005164 
+
+Call:
+lm(formula = Ret1M ~ Others_1D + Others_5D + Others_20D + Others_60D + 
+    Others_120D + Others_250D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.28432 -0.05680 -0.00492  0.04361  0.58860 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.0440448  0.0067633   6.512 6.26e-10 ***
+Others_1D    0.0005645  0.0290740   0.019    0.985    
+Others_5D    0.0047425  0.0122184   0.388    0.698    
+Others_20D  -0.0011385  0.0019198  -0.593    0.554    
+Others_60D  -0.0012800  0.0013404  -0.955    0.341    
+Others_120D  0.0016061  0.0014144   1.136    0.258    
+Others_250D -0.0006163  0.0005753  -1.071    0.285    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.09293 on 193 degrees of freedom
+Multiple R-squared: 0.01188,	Adjusted R-squared: -0.01884 
+F-statistic: 0.3867 on 6 and 193 DF,  p-value: 0.887 
+
+Call:
+lm(formula = Ret1M ~ Foreign_1D + Foreign_5D + Foreign_20D + 
+    Foreign_60D + Foreign_120D + Foreign_250D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.20493 -0.05317 -0.00682  0.04917  0.60390 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   4.894e-02  7.459e-03   6.561 4.79e-10 ***
+Foreign_1D    9.807e-03  9.827e-03   0.998  0.31953    
+Foreign_5D    9.554e-03  3.624e-03   2.637  0.00906 ** 
+Foreign_20D  -1.827e-03  1.361e-03  -1.343  0.18100    
+Foreign_60D   3.062e-04  6.417e-04   0.477  0.63373    
+Foreign_120D -5.058e-05  4.463e-04  -0.113  0.90989    
+Foreign_250D -6.097e-05  2.257e-04  -0.270  0.78734    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.09073 on 193 degrees of freedom
+Multiple R-squared: 0.05802,	Adjusted R-squared: 0.02874 
+F-statistic: 1.981 on 6 and 193 DF,  p-value: 0.07012 
+
+Call:
+lm(formula = Ret1M ~ ROE_Trailing + ROE_FY1 + ROE_FY2, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.21795 -0.05018 -0.00214  0.04658  0.51162 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.08471    0.01360   6.231 3.14e-09 ***
+ROE_Trailing  0.19990    0.17702   1.129   0.2603    
+ROE_FY1      -0.46399    0.28050  -1.654   0.0998 .  
+ROE_FY2      -0.06730    0.19179  -0.351   0.7261    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08309 on 182 degrees of freedom
+  (14 observations deleted due to missingness)
+Multiple R-squared: 0.108,	Adjusted R-squared: 0.09331 
+F-statistic: 7.346 on 3 and 182 DF,  p-value: 0.0001126 
+
+Call:
+lm(formula = Ret1M ~ PBR_Trailing + PBR_FY1 + PBR_FY2, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.19836 -0.05072 -0.00611  0.04627  0.58904 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.06235    0.01229   5.075 9.51e-07 ***
+PBR_Trailing  0.04008    0.01915   2.093   0.0377 *  
+PBR_FY1      -0.07970    0.05321  -1.498   0.1359    
+PBR_FY2       0.03221    0.04780   0.674   0.5012    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08564 on 182 degrees of freedom
+  (14 observations deleted due to missingness)
+Multiple R-squared: 0.05255,	Adjusted R-squared: 0.03693 
+F-statistic: 3.365 on 3 and 182 DF,  p-value: 0.01988 
+
+Call:
+lm(formula = Ret1M ~ PER_Trailing + PER_FY1 + PER_FY2, data = plot_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.247463 -0.051707 -0.002891  0.046372  0.185058 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)   
+(Intercept)   5.071e-02  1.515e-02   3.347  0.00101 **
+PER_Trailing  3.074e-06  5.477e-06   0.561  0.57539   
+PER_FY1       3.787e-04  3.376e-04   1.122  0.26354   
+PER_FY2      -1.667e-03  1.446e-03  -1.153  0.25058   
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.07499 on 168 degrees of freedom
+  (28 observations deleted due to missingness)
+Multiple R-squared: 0.01059,	Adjusted R-squared: -0.007073 
+F-statistic: 0.5997 on 3 and 168 DF,  p-value: 0.6161 
+
+Call:
+lm(formula = Ret1M ~ EY_Trailing + EY_FY1 + EY_FY2, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.26084 -0.05264 -0.00476  0.05270  0.38713 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)   
+(Intercept)  0.03797    0.01651   2.300  0.02255 * 
+EY_Trailing  0.05906    0.15057   0.392  0.69535   
+EY_FY1      -0.75632    0.22853  -3.309  0.00112 **
+EY_FY2       0.59563    0.24194   2.462  0.01474 * 
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08233 on 184 degrees of freedom
+  (12 observations deleted due to missingness)
+Multiple R-squared: 0.1174,	Adjusted R-squared: 0.103 
+F-statistic:  8.16 on 3 and 184 DF,  p-value: 3.954e-05 
+
+Call:
+lm(formula = Ret1M ~ NI_Growth_FQ0 + NI_Growth_FY1 + NI_Growth_FY2, 
+    data = plot_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.251478 -0.048529  0.000597  0.048747  0.171801 
+
+Coefficients:
+                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    4.380e-02  6.301e-03   6.951 1.08e-10 ***
+NI_Growth_FQ0 -3.511e-04  2.613e-04  -1.344   0.1811    
+NI_Growth_FY1 -1.645e-02  6.327e-03  -2.599   0.0103 *  
+NI_Growth_FY2  4.908e-05  1.197e-04   0.410   0.6823    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.07481 on 148 degrees of freedom
+  (48 observations deleted due to missingness)
+Multiple R-squared: 0.05966,	Adjusted R-squared: 0.0406 
+F-statistic:  3.13 on 3 and 148 DF,  p-value: 0.02755 
+
+-----------------------------------------------------------------------------------------------------------------------
+Call:
+lm(formula = Ret1M ~ Ret3M + Inst_20D + Fund_20D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.17483 -0.04946 -0.00893  0.04407  0.53502 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.0451910  0.0062197   7.266 8.58e-12 ***
+Ret3M       0.1612426  0.0478185   3.372 0.000899 ***
+Inst_20D    0.0020014  0.0007742   2.585 0.010458 *  
+Fund_20D    0.0026413  0.0016130   1.637 0.103138    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08277 on 196 degrees of freedom
+Multiple R-squared: 0.204,	Adjusted R-squared: 0.1918 
+F-statistic: 16.74 on 3 and 196 DF,  p-value: 1.004e-09 
+
+
+Call:
+lm(formula = Ret1M ~ Ret1D + Pension_20D + Foreign_5D + EY_FY1 + 
+    NI_Growth_FY1, data = plot_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.164734 -0.049868 -0.000098  0.047437  0.158832 
+
+Coefficients:
+                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    0.0258433  0.0121548   2.126 0.034984 *  
+Ret1D          0.0783482  0.3590190   0.218 0.827522    
+Pension_20D    0.0060076  0.0013131   4.575 9.35e-06 ***
+Foreign_5D     0.0067242  0.0019924   3.375 0.000921 ***
+EY_FY1         0.0567263  0.1286455   0.441 0.659830    
+NI_Growth_FY1 -0.0009597  0.0012946  -0.741 0.459569    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.06982 on 164 degrees of freedom
+  (30 observations deleted due to missingness)
+Multiple R-squared: 0.1679,	Adjusted R-squared: 0.1425 
+F-statistic: 6.619 on 5 and 164 DF,  p-value: 1.221e-05 
+
+
+Call:
+lm(formula = Ret1M ~ Ret12M + Inst_5D + PBR_Trailing + EY_FY2, 
+    data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.23813 -0.05320 -0.00280  0.04646  0.52446 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.0959383  0.0178750   5.367  2.4e-07 ***
+Ret12M       -0.0473419  0.0185329  -2.554  0.01145 *  
+Inst_5D       0.0005017  0.0015631   0.321  0.74862    
+PBR_Trailing -0.0053046  0.0029286  -1.811  0.07173 .  
+EY_FY2       -0.3984122  0.1527786  -2.608  0.00987 ** 
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.08421 on 183 degrees of freedom
+  (12 observations deleted due to missingness)
+Multiple R-squared: 0.08165,	Adjusted R-squared: 0.06158 
+F-statistic: 4.068 on 4 and 183 DF,  p-value: 0.003491 
+
+------------------------------------------------------------------------------------------
+Call:
+lm(formula = Ret1M ~ Turnover_20D + Inst_20D + Sec_20D + Fund_20D + 
+    Pension_20D + Others_20D + Foreign_20D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.15903 -0.04264 -0.00870  0.03456  0.57455 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   3.530e-02  7.100e-03   4.972 1.47e-06 ***
+Turnover_20D  4.110e-08  1.535e-07   0.268   0.7892    
+Inst_20D      7.340e-03  1.635e-03   4.490 1.23e-05 ***
+Sec_20D      -4.446e-03  1.965e-03  -2.262   0.0248 *  
+Fund_20D     -1.774e-03  2.174e-03  -0.816   0.4154    
+Pension_20D  -5.558e-03  2.479e-03  -2.242   0.0261 *  
+Others_20D    3.933e-03  1.619e-03   2.430   0.0160 *  
+Foreign_20D   4.056e-03  8.712e-04   4.656 6.01e-06 ***
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.07997 on 192 degrees of freedom
+Multiple R-squared: 0.2721,	Adjusted R-squared: 0.2456 
+F-statistic: 10.26 on 7 and 192 DF,  p-value: 6.717e-11 
+
+Call:
+lm(formula = Ret1W ~ Turnover_5D + Inst_5D + Sec_5D + Fund_5D + 
+    Pension_5D + Others_5D + Foreign_5D, data = plot_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.085704 -0.018411 -0.006319  0.012933  0.200534 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1.034e-02  3.058e-03   3.382 0.000873 ***
+Turnover_5D  6.709e-08  6.892e-08   0.974 0.331523    
+Inst_5D      4.635e-03  1.483e-03   3.124 0.002058 ** 
+Sec_5D      -5.746e-03  2.237e-03  -2.569 0.010960 *  
+Fund_5D      1.175e-03  2.438e-03   0.482 0.630325    
+Pension_5D   1.018e-03  2.371e-03   0.429 0.668253    
+Others_5D    4.768e-03  3.538e-03   1.347 0.179413    
+Foreign_5D  -1.481e-03  1.241e-03  -1.194 0.233911    
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.03423 on 192 degrees of freedom
+Multiple R-squared: 0.2476,	Adjusted R-squared: 0.2202 
+F-statistic: 9.028 on 7 and 192 DF,  p-value: 1.287e-09 
+
+Call:
+lm(formula = Ret3M ~ Inst_60D + Sec_60D + Fund_60D + Pension_60D + 
+    Others_60D + Foreign_60D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.19203 -0.05931 -0.01218  0.04263  0.33954 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.0048606  0.0072208  -0.673  0.50167    
+Inst_60D     0.0051590  0.0009879   5.222 4.56e-07 ***
+Sec_60D     -0.0035583  0.0014438  -2.465  0.01459 *  
+Fund_60D    -0.0004567  0.0013832  -0.330  0.74162    
+Pension_60D -0.0031001  0.0015546  -1.994  0.04754 *  
+Others_60D   0.0021595  0.0007129   3.029  0.00279 ** 
+Foreign_60D  0.0026183  0.0004569   5.730 3.80e-08 ***
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.09699 on 193 degrees of freedom
+Multiple R-squared: 0.4024,	Adjusted R-squared: 0.3838 
+F-statistic: 21.66 on 6 and 193 DF,  p-value: < 2.2e-16 
+
+Call:
+lm(formula = Ret6M ~ Inst_120D + Sec_120D + Fund_120D + Pension_120D + 
+    Others_120D + Foreign_120D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.45760 -0.10719 -0.03940  0.07664  0.89698 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.0870653  0.0162734   5.350 2.47e-07 ***
+Inst_120D     0.0052981  0.0013410   3.951 0.000109 ***
+Sec_120D     -0.0045632  0.0019751  -2.310 0.021923 *  
+Fund_120D    -0.0024468  0.0018842  -1.299 0.195641    
+Pension_120D  0.0001272  0.0020655   0.062 0.950960    
+Others_120D   0.0011098  0.0010752   1.032 0.303274    
+Foreign_120D  0.0024368  0.0005075   4.802 3.15e-06 ***
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.1922 on 193 degrees of freedom
+Multiple R-squared: 0.3226,	Adjusted R-squared: 0.3016 
+F-statistic: 15.32 on 6 and 193 DF,  p-value: 2.472e-14 
+
+Call:
+lm(formula = Ret12M ~ Inst_250D + Sec_250D + Fund_250D + Pension_250D + 
+    Others_250D + Foreign_250D, data = plot_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.44467 -0.17503 -0.05844  0.08814  1.93401 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.0897305  0.0267933   3.349 0.000975 ***
+Inst_250D     0.0027884  0.0014350   1.943 0.053460 .  
+Sec_250D     -0.0048180  0.0025531  -1.887 0.060643 .  
+Fund_250D    -0.0005647  0.0019030  -0.297 0.766981    
+Pension_250D  0.0024248  0.0022539   1.076 0.283348    
+Others_250D   0.0001547  0.0011862   0.130 0.896370    
+Foreign_250D  0.0019621  0.0005621   3.491 0.000597 ***
+---
+Signif. codes:  0 ?**?0.001 ?*?0.01 ??0.05 ??0.1 ??1 
+
+Residual standard error: 0.3128 on 193 degrees of freedom
+Multiple R-squared: 0.1915,	Adjusted R-squared: 0.1664 
+F-statistic:  7.62 on 6 and 193 DF,  p-value: 2.362e-07 
