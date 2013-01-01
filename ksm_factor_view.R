@@ -56,66 +56,6 @@ plot_data[which((plot_data$NI_FY1 < 0) | (plot_data$NI_FY0 <0)),]$NI_Growth_FY1 
 plot_data$NI_Growth_FY2 <- plot_data$NI_FY2/plot_data$NI_FY1-1
 plot_data[which((plot_data$NI_FY2 < 0) | (plot_data$NI_FY1 <0)),]$NI_Growth_FY2 <- NA # NA Negative NI
 
-
-# Plot
-## Traling
-x_var <- "ROE_Trailing"
-y_var <- "PBR_Trailing"
-xlim_u <- 0.5
-xlim_d <- -0.2
-ylim_u <- 7
-ylim_d <- 0
-
-other_var <- "WICS1"
-p <- ggplot(plot_data, aes_string(x=x_var, y=y_var))
-p <- p+geom_point(aes_string(colour=other_var))
-p <- p+geom_smooth(data=plot_data[which((plot_data[[x_var]] < xlim_u) & 
-  (plot_data[[x_var]] > xlim_d) & (plot_data[[y_var]] < ylim_u) & (plot_data[[y_var]] > ylim_d)),]
-                   , method="lm", formula=y~x)
-p
-p + coord_cartesian(xlim=c(xlim_d,xlim_u), ylim=c(ylim_d,ylim_u))
-
-fit <- lm(get(y_var)~get(x_var), data=plot_data[which((plot_data[[x_var]] < xlim_u) & 
-  (plot_data[[x_var]] > xlim_d) & (plot_data[[y_var]] < ylim_u) & (plot_data[[y_var]] > ylim_d)),c(y_var,x_var)])
-summary(fit)
-## FY1
-x_var <- "ROE_FY1"
-y_var <- "PBR_FY1"
-xlim_u <- 0.5
-xlim_d <- -0.2
-ylim_u <- 7
-ylim_d <- 0
-
-other_var <- "WICS1"
-p <- ggplot(plot_data, aes_string(x=x_var, y=y_var))
-p <- p+geom_point(aes_string(colour=other_var))
-p <- p+geom_smooth(data=plot_data[which((plot_data[[x_var]] < xlim_u) & 
-  (plot_data[[x_var]] > xlim_d) & (plot_data[[y_var]] < ylim_u) & (plot_data[[y_var]] > ylim_d)),]
-                   , method="lm", formula=y~x)
-p
-p + coord_cartesian(xlim=c(xlim_d,xlim_u), ylim=c(ylim_d,ylim_u))
-
-fit <- lm(get(y_var)~get(x_var), data=plot_data[which((plot_data[[x_var]] < xlim_u) & 
-  (plot_data[[x_var]] > xlim_d) & (plot_data[[y_var]] < ylim_u) & (plot_data[[y_var]] > ylim_d)),c(y_var,x_var)])
-summary(fit)
-
-## FY2
-x_var <- "ROE_FY2"
-y_var <- "PBR_FY2"
-xlim_u <- 0.5
-xlim_d <- -0.2
-ylim_u <- 6
-ylim_d <- 0
-
-other_var <- "WICS1"
-p <- ggplot(plot_data, aes_string(x=x_var, y=y_var))
-p <- p+geom_point(aes_string(colour=other_var))
-p <- p+geom_smooth(data=plot_data[which((plot_data[[x_var]] < xlim_u) & 
-  (plot_data[[x_var]] > xlim_d) & (plot_data[[y_var]] < ylim_u) & (plot_data[[y_var]] > ylim_d)),]
-                   , method="lm", formula=y~x)
-p
-p + coord_cartesian(xlim=c(xlim_d,xlim_u), ylim=c(ylim_d,ylim_u))
-
 fit <- lm(get(y_var)~get(x_var), data=plot_data[which((plot_data[[x_var]] < xlim_u) & 
   (plot_data[[x_var]] > xlim_d) & (plot_data[[y_var]] < ylim_u) & (plot_data[[y_var]] > ylim_d)),c(y_var,x_var)])
 summary(fit)
