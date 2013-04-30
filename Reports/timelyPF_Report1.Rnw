@@ -1,0 +1,130 @@
+\documentclass[nohyper,justified]{tufte-handout}
+%\documentclass{article}
+%\usepackage[absolute,showboxes]{textpos}
+\usepackage[absolute]{textpos}
+\usepackage{sidecap}
+%\usepackage{color}
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+%\SweaveOpts{prefix.string=graphics/plot, eps = FALSE, pdf = TRUE}
+ 
+\begin{wide}
+\section{\Huge Performance Summary with Sweave and R}
+{\Large Here is a little experiment with R and Sweave to produce a performance report.  I have done some samples in the past, but I wanted to iterate through a couple more, especially to evaluate other options for what has been started in the PApages package.  Of course, this text could be easily replaced with some commentary from a manager about opportunities, thoughts, or current allocation.  A dashboard set of charts also might be very helpful here.}
+ 
+\hrulefill
+ 
+\end{wide}
+ 
+ 
+ 
+ 
+<<eval=TRUE,echo=FALSE,results=hide,warning=FALSE>>=
+#do requires and set up environment for reporting
+require(xtable)
+require(ggplot2)
+require(directlabels)
+require(reshape2)
+require(latticeExtra)
+require(quantmod)
+require(PerformanceAnalytics)
+data(managers)
+#get xts in df form so that we can melt with the reshape package
+#will use just manager 1, sp500, and 10y treasury
+managers <- managers[,c(1,8,9)]
+#add 0 at beginning so cumulative returns start at 1
+#also cumulative will match up datewise with returns
+managers <- as.xts(rbind(rep(0,NCOL(managers)),coredata(managers)),
+                   order.by=c(as.Date(format(index(managers)[1],"%Y-%m-01"))-1,index(managers)))
+managers.df <- as.data.frame(cbind(index(managers),coredata(managers)),stringsAsFactors=FALSE)
+#melt data which puts in a form that lattice and ggplot enjoy
+managers.melt <- melt(managers.df,id.vars=1)
+colnames(managers.melt) <- c("date","account","return")
+managers.melt[,1] <- as.Date(managers.melt[,1])
+ 
+#get cumulative returns starting at 1
+managers.cumul <- as.xts(
+  apply(managers+1,MARGIN=2,FUN=cumprod),
+  #add end of first month to accommodate the 1 that we add
+  order.by=index(managers))
+managers.cumul.df <- as.data.frame(cbind(index(managers.cumul),
+                                         coredata(managers.cumul)),
+                                   stringsAsFactors=FALSE)
+managers.cumul.melt <- melt(managers.cumul.df,id.vars=1)
+colnames(managers.cumul.melt) <- c("date","account","return")
+managers.cumul.melt[,1] <- as.Date(managers.cumul.melt[,1])
+ 
+#get rolling returns for 1y, 3y, 5y, since inception
+trailing <- table.TrailingPeriods(managers, periods=c(12,36,60,NROW(managers)),FUNCS=c("mean"),funcs.names=c("return"))
+trailing.df <- as.data.frame(cbind(c("1y","3y","5y","SinceIncep"),
+                                   c(rep("return",4)),
+                                   coredata(trailing)),
+                             stringsAsFactors=FALSE)
+trailing.melt <- melt(trailing.df,id.vars=1:2)
+colnames(trailing.melt) <- c("period","measure","account","return")
+ 
+#function to get numbers in percent format
+#will use \\ to play well with tikz
+percent <- function(x, digits = 2, format = "f", ...) 
+{ 
+  paste(formatC(100 * x, format = format, digits = digits, ...), "%", sep = "") 
+}
+@
+ 
+\begin{textblock*}{150mm}(5mm,70mm)
+\begin{figure}
+%to really fill the page, this works nicely
+%\begin{minipage}[t]{1.2\linewidth}
+%\begin{minipage}[t]{0.5\linewidth}
+\vspace{0pt}
+<<echo=FALSE,eval=TRUE,fig=TRUE,width=4,height=6>>=
+charts.PerformanceSummary(managers,
+                          colorset=c(brewer.pal(9,"Blues")[6],brewer.pal(8,"Greys")[c(5,4)]),
+                          xlab=NULL)
+@
+\end{figure}
+\end{textblock*}
+ 
+\begin{textblock*}{85mm}(120mm,103mm)
+Cumulative returns offer one of the best methods to evaluate the ability of a manager to achieve long term returns.  Ultimately, the cumulative return is often one of the primary objectives of our clients.
+\newline
+\begin{figure}
+\vspace{0pt}
+<<echo=FALSE,eval=TRUE,results=tex>>=
+trailingtable <- apply(trailing,MARGIN=2,FUN=percent)
+rownames(trailingtable) <- c("1y","3y","5y",paste("Since Inception ",format(index(managers)[1],"%b %Y")))
+print(xtable(trailingtable), floating=FALSE, scalebox=0.8)
+@
+\end{figure}
+\end{textblock*}
+ 
+\begin{textblock*}{85mm}(120mm,161mm)
+However, cumulative returns must also be evaluated with reference to the risks incurred to generate those returns.  Below are multiple risk measures.  We are most concerned with limiting drawdowns shown in the bottom left chart.
+\newline
+\begin{figure}
+\vspace{0pt}
+<<echo=FALSE,eval=TRUE,results=tex>>=
+risktable <- table.DownsideRisk(managers)
+print(xtable(risktable), floating=FALSE, scalebox=0.7)
+@
+\end{figure}
+\end{textblock*}
+
+\newpage
+\section{Returns}
+Unfortunately, the Return section is generally the focus of the sales pitch and also is often the biggest concern for the prospect.  Although it easiest to sell on return in the short-term, long-term success requires much more focus on the graphs presented in the Overview and Risk sections.
+\begin{table}[htb]
+\centering
+<<echo=FALSE,eval=TRUE,results=tex>>=
+cal_returns <- table.CalendarReturns(managers)
+cal_returns.df <- as.data.frame(cbind(rownames(cal_returns),apply(cal_returns/100,MARGIN=2,percent)))
+print(xtable(cal_returns[,1:12]), floating=FALSE)
+@
+%\caption{Unbelieveable returns with only one negative year.  SEC loves language like this.
+%\label{fig:returns}}
+\end{table}
+\newpage
+\section{Risk}
+
+\end{document}

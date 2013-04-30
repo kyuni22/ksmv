@@ -1,6 +1,7 @@
 require(quantmod)
 require(pastecs)
 require(ggplot2)
+require(corrgram)
 require(car)
 sapply(list.files(pattern="[.]R$", path='functions/', full.names=TRUE), source)
 
