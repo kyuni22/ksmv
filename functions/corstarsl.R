@@ -1,8 +1,8 @@
-corstarsl <- function(x){ 
+corstarsl <- function(x, type="pearson"){ 
   require(Hmisc) 
   x <- as.matrix(x) 
-  R <- rcorr(x)$r 
-  p <- rcorr(x)$P 
+  R <- rcorr(x, type=type)$r 
+  p <- rcorr(x, type=type)$P 
   
   ## define notions for significance levels; spacing is important.
   mystars <- ifelse(p < .001, "***", ifelse(p < .01, "** ", ifelse(p < .05, "* ", " ")))
