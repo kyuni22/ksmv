@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=pdflatex 2012.7.19)  29 APR 2013 14:21
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=pdflatex 2012.7.19)  3 MAY 2013 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -621,10 +621,8 @@ Package pdftex.def Info: timelyPF_Report1-002.pdf used on input line 31.
  [1{c:/usr/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
  <./timelyPF_Report1-002.pdf>]
-Overfull \hbox (113.86848pt too wide) in paragraph at lines 91--110
- [][] 
- []
-
+WIDE: outside SCfloat
+WIDE: \linewidth=480.0pt
 [2]
 
 Package bibentry Warning: You have used \nobibliography* 
@@ -633,10 +631,10 @@ Package bibentry Warning: You have used \nobibliography*
 
 [3] (./timelyPF_Report1.aux) ) 
 Here is how much of TeX's memory you used:
- 6185 strings out of 493633
- 88673 string characters out of 3145073
- 178207 words of memory out of 3000000
- 9284 multiletter control sequences out of 15000+200000
+ 6186 strings out of 493633
+ 88680 string characters out of 3145073
+ 179214 words of memory out of 3000000
+ 9285 multiletter control sequences out of 15000+200000
  26387 words of font info for 51 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  37i,12n,45p,494b,351s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -644,7 +642,7 @@ Here is how much of TeX's memory you used:
 c/amsfonts/cm/cmr10.pfb><c:/usr/texlive/2011/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr12.pfb><c:/usr/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti12.pfb>
-Output written on timelyPF_Report1.pdf (3 pages, 63238 bytes).
+Output written on timelyPF_Report1.pdf (3 pages, 63599 bytes).
 PDF statistics:
  34 PDF objects out of 1000 (max. 8388607)
  22 compressed objects within 1 object stream

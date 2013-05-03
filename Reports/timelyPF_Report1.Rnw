@@ -113,9 +113,14 @@ print(xtable(risktable), floating=FALSE, scalebox=0.7)
 
 \newpage
 \section{Returns}
-Unfortunately, the Return section is generally the focus of the sales pitch and also is often the biggest concern for the prospect.  Although it easiest to sell on return in the short-term, long-term success requires much more focus on the graphs presented in the Overview and Risk sections.
-\begin{table}[htb]
-\centering
+\begin{wide}
+{\Large Unfortunately, the Return section is generally the focus of the sales pitch and also is often the biggest concern for the prospect.  Although it easiest to sell on return in the short-term, long-term success requires much more focus on the graphs presented in the Overview and Risk sections.}
+\end{wide}
+
+\begin{textblock*}{150mm}(5mm,70mm)
+Cumulative returns offer one of the best methods to evaluate the ability of a manager to achieve long term returns.  Ultimately, the cumulative return is often one of the primary objectives of our clients.
+\newline
+\begin{figure}
 <<echo=FALSE,eval=TRUE,results=tex>>=
 cal_returns <- table.CalendarReturns(managers)
 cal_returns.df <- as.data.frame(cbind(rownames(cal_returns),apply(cal_returns/100,MARGIN=2,percent)))
@@ -123,7 +128,8 @@ print(xtable(cal_returns[,1:12]), floating=FALSE)
 @
 %\caption{Unbelieveable returns with only one negative year.  SEC loves language like this.
 %\label{fig:returns}}
-\end{table}
+\end{figure}
+\end{textblock*}
 \newpage
 \section{Risk}
 
