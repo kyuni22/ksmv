@@ -35,15 +35,17 @@
 require('xtable')
 require('PerformanceAnalytics')
 require('quantmod')
-simsum <- read.zoo("./data/kbt_data.csv", header=TRUE, sep=",", tz="")
+simsum <- read.zoo("./data/kbt_data_econ.csv", header=TRUE, sep=",", tz="")
 simsum <- as.xts(simsum)
-simsum.month <- apply.monthly(simsum[,2], sum)
-for(i in 3:NCOL(simsum)) {
+simsum.month <- apply.monthly(simsum[,1], sum)
+for(i in 2:NCOL(simsum)) {
   simsum.month <- cbind(simsum.month, apply.monthly(simsum[,i], sum))
 }
-simsum.month <- merge.xts(simsum[,1], simsum.month, join='inner')
-simsum.month[,1] <- ROC(simsum.month[,1], type="continuous")
-simsum.month[1,1] <- 0
+
+## use it for Index type data
+#simsum.month <- merge.xts(simsum[,1], simsum.month, join='inner')
+#simsum.month[,1] <- ROC(simsum.month[,1], type="continuous")
+#simsum.month[1,1] <- 0
 
 #Test Setting
 test.col <- 3

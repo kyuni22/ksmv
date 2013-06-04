@@ -1,5 +1,6 @@
 require(quantmod)
 require(tseries)
+require(quadprog)
 
 ## Retrieving Data & Refining
 file1 <- "./data/pf_opt_data.csv"
@@ -14,6 +15,30 @@ for (i in 1:7) {
 
 mu.vec <- matrix(coredata(prc_pf_opt_data['2012-12-31',1:7])/coredata(prc_pf_opt_data['2012-09-28',1:7])-1, nrow=1)*4
 cov.mat <- cov(pf_opt_data['2012-09-28/2012-12-31',1:7])*252
+
+D.mat <- 2*cov.mat
+d.vec <- rep(0,7)
+A.mat <- cbind(rep(1,7), diag(7))
+b.vec <- c(1, c(0.1,0.1,0.1,0.1,0.1,0.1,0.4))
+
+solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
+
+D.mat <- 2*cov.mat
+d.vec <- rep(0,7)
+A.mat <- cbind(rep(1,7))
+b.vec <- c(1)
+
+solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
+
+D.mat <- 2*cov.mat
+d.vec <- rep(0,7)
+A.mat <- cbind(diag(7), -diag(7))
+b.vec <- c(rep(-0.1,7), rep(-0.5,7))
+
+solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=0)
+
+
+
 
 w_step = 0.01
 reshigh <- c(0.1,0.1,0.1,0,0,0,1)
