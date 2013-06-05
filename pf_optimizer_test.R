@@ -19,7 +19,7 @@ cov.mat <- cov(pf_opt_data['2012-09-28/2012-12-31',1:7])*252
 D.mat <- 2*cov.mat
 d.vec <- rep(0,7)
 A.mat <- cbind(rep(1,7), diag(7))
-b.vec <- c(1, c(0.1,0.1,0.1,0.1,0.1,0.1,0.4))
+b.vec <- c(1, rep(0,7)) #c(-0.1,-0.1,-0.1,-0.1,-0.1,-0.1,-0.4))
 
 solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
 
@@ -33,7 +33,7 @@ solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
 D.mat <- 2*cov.mat
 d.vec <- rep(0,7)
 A.mat <- cbind(diag(7), -diag(7))
-b.vec <- c(rep(-0.1,7), rep(-0.5,7))
+b.vec <- c(c(-0.1,-0.1,-0.1,-0.1,-0.1,-0.1,-0.4), -c(0.1,0.1,0.1,0.1,0.1,0.1,0.4))
 
 solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=0)
 
