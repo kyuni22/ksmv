@@ -9,24 +9,31 @@ pf_opt_data <- as.xts(pf_opt_data[,-1], order.by=as.POSIXct(pf_opt_data[,1]))
 prc_pf_opt_data <- pf_opt_data
 
 # Change to return data
-for (i in 1:7) {
+for (i in 1:6) {
   pf_opt_data[,i] <- ROC(pf_opt_data[,i], type="discrete")
 }
 
-mu.vec <- matrix(coredata(prc_pf_opt_data['2012-12-31',1:7])/coredata(prc_pf_opt_data['2012-09-28',1:7])-1, nrow=1)*4
-cov.mat <- cov(pf_opt_data['2012-09-28/2012-12-31',1:7])*252
+mu.vec <- matrix(coredata(prc_pf_opt_data['2012-12-31',1:6])/coredata(prc_pf_opt_data['2012-09-28',1:6])-1, nrow=1)*4
+cov.mat <- cov(pf_opt_data['2012-09-28/2012-12-31',1:6])*252
 
 D.mat <- 2*cov.mat
-d.vec <- rep(0,7)
-A.mat <- cbind(rep(1,7), diag(7))
-b.vec <- c(1, rep(0,7)) #c(-0.1,-0.1,-0.1,-0.1,-0.1,-0.1,-0.4))
+d.vec <- rep(0,6)
+A.mat <- cbind(as.vector(mu.vec), rep(1,6), diag(6))
+b.vec <- c(-0.1, 1, rep(0,6)) #c(-0.1,-0.1,-0.1,-0.1,-0.1,-0.1,-0.4))
 
-solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
+solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=2)
 
 D.mat <- 2*cov.mat
 d.vec <- rep(0,7)
 A.mat <- cbind(rep(1,7))
 b.vec <- c(1)
+
+solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
+
+D.mat <- 2*cov.mat
+d.vec <- rep(0,6)
+A.mat <- cbind(as.vector(mu.vec))
+b.vec <- c(-1)
 
 solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
 

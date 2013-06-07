@@ -26,6 +26,7 @@ sapply(list.files(pattern="[.]R$", path='functions/', full.names=TRUE), source)
     w_pf_opt_data <- cbind(w_pf_opt_data, to.period(pf_opt_data[,i], period='weeks')[,4])
   }
   names(w_pf_opt_data) <- names(pf_opt_data)
+  prc_pf_opt_data <- w_pf_opt_data
 
   # Change to return data
   for (i in 1:NCOL(pf_opt_data)) {
@@ -47,14 +48,21 @@ sapply(list.files(pattern="[.]R$", path='functions/', full.names=TRUE), source)
   
   #loop
   for(i in (lookback+start_i):(nrow(w_pf_opt_data)-1)) {
+    #Checking Return
+    uplimit <- as.vector(ifelse(coredata(prc_pf_opt_data[i]) /coredata(prc_pf_opt_data[i-lookback+1])-1>0, 1,0))
+    downlimit <- as.vector(ifelse(coredata(prc_pf_opt_data[i]) /coredata(prc_pf_opt_data[i-lookback+1])-1<0, -1,0))    
+    mu.vec <- as.vector(coredata(prc_pf_opt_data[i]) /coredata(prc_pf_opt_data[i-lookback+1])-1)
+    
     #cov.mat
     cov.mat <- cov(w_pf_opt_data[(i-lookback+1):i,assetsToTest])
     cov.mat <- make.positive.definite(cov.mat, 0.000000001)
     ### Optimizing part
     D.mat <- 2*cov.mat
     d.vec <- rep(0,NCOL(w_pf_opt_data))
-    A.mat <- cbind(rep(1,NCOL(w_pf_opt_data)))
-    b.vec <- c(1)
+#    A.mat <- cbind(rep(1,NCOL(w_pf_opt_data)))
+#    b.vec <- c(1) #b.vec <- c(1, rep(-1,6), -rep(1,6)) 
+    A.mat <- cbind(mu.vec, diag(NCOL(w_pf_opt_data)), -diag(NCOL(w_pf_opt_data)))   
+    b.vec <- c(1,rep(-1,NCOL(w_pf_opt_data)),-rep(1,NCOL(w_pf_opt_data))) #, downlimit, -uplimit)
     
     optimized <- solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
     adj_w <- optimized$solution
