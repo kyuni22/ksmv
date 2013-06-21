@@ -62,12 +62,20 @@ sapply(list.files(pattern="[.]R$", path='functions/', full.names=TRUE), source)
 #    A.mat <- cbind(rep(1,NCOL(w_pf_opt_data)))
 #    b.vec <- c(1) #b.vec <- c(1, rep(-1,6), -rep(1,6)) 
     A.mat <- cbind(mu.vec, diag(NCOL(w_pf_opt_data)), -diag(NCOL(w_pf_opt_data)))   
-    b.vec <- c(1,rep(-1,NCOL(w_pf_opt_data)),-rep(1,NCOL(w_pf_opt_data))) #, downlimit, -uplimit)
+    b.vec <- c(0.1, downlimit, -uplimit) #rep(-1,NCOL(w_pf_opt_data)),-rep(1,NCOL(w_pf_opt_data))) #
     
     optimized <- solve.QP(Dmat=D.mat, dvec=d.vec, Amat=A.mat, bvec=b.vec, meq=1)
+    optimized$solution
+
+    
     adj_w <- optimized$solution
     weight <- rbind(weight,xts(x=matrix(adj_w,nrow=1), order.by=index(w_pf_opt_data[i+1])))    
-    
+
+    #pp <- portfolio.optim(x=matrix(mu.vec, nrow=1), pm=0.1, covmat=cov.mat,
+    #                reshigh=rep(1,NCOL(w_pf_opt_data)), reslow=rep(-1,NCOL(w_pf_opt_data)),shorts=TRUE,silent=T)
+
+    #sqrt(optimized$solution %*% cov.mat %*% optimized$solution)   
+    #sqrt(pp$pw %*% cov.mat %*% pp$pw)
 #    #calculate max sharpe ratio weight
 #    ef <- effFrontier_k(mu.vec, cov.mat)
 #    #adjust vol to certain level
